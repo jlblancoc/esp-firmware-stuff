@@ -26,3 +26,11 @@ echo -n -e "\xa0\x01\x00\xa1" | nc 192.168.18.20 8080 -w0
 echo -n -e "\xa0\x02\x01\xa3" | nc 192.168.18.20 8080 -w0
 echo -n -e "\xa0\x02\x00\xa2" | nc 192.168.18.20 8080 -w0
 ```
+
+
+## Programmer
+
+[This programmer](https://www.aliexpress.com/snapshot/0.html?orderId=8129207443365652) 
+plus a jump to ground GPIO 0 to GND in program mode
+[as shown here](https://neburtechspace.blogspot.com/2018/01/programming-esp8266-esp-01-using-uart.html).
+
