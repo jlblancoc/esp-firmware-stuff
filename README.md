@@ -81,4 +81,8 @@ restart 1
 
 
 
+## others
+
+https://github.com/nodemcu/nodemcu-firmware
+
 
