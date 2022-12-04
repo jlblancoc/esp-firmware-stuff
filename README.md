@@ -62,6 +62,11 @@ Power on the Relay module while pressing Button #1,
 only L1 on, then after "ready" -> L3 blinking, it 
 is responsive to turn on/off commands.
 
+Cmd: "rule1 ?"  to verify the rule is ok.
+
+SerialSend5 => 5 = send as hex. Data in serial response messages is encoded as hex strings
+Docs: https://tasmota.github.io/docs/Commands/#receiving-state-of-anything-that-triggers-switch-more-than-one-time
+
 ----
 CP2102 USB-TTL module: works too. RX->TX, TX->RX.
 
@@ -79,6 +84,10 @@ Backlog IPAddress1 192.168.18.201; IPAddress2 192.168.18.1; IPAddress3 255.255.2
 
 restart 1
 
+## From Python:
+
+/usr/bin/wget "http://192.168.18.201/cm?cmnd=Power2%20On"
+/usr/bin/wget "http://192.168.18.201/cm?cmnd=Power2%20Off"
 
 
 ## others
