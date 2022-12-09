@@ -7,6 +7,10 @@ Usage::
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 from urllib.parse import urlparse, parse_qs
+import os
+import time
+
+BASEDIR = os.environ['HOME']
 
 
 class S(BaseHTTPRequestHandler):
@@ -20,7 +24,10 @@ class S(BaseHTTPRequestHandler):
             fields = parse_qs(urlparse(self.path).query)
             file = fields['file'][0]
             data = fields['data'][0]
-            logging.info("file=" + file + " data=" + data)
+            file = BASEDIR + '/' + file
+
+            with open(file, "a") as myfile:
+                myfile.write(str(int(time.time())) + " " + data + "\n")
 
             self._set_response()
             self.wfile.write("OK".encode('utf-8'))
@@ -44,7 +51,7 @@ class S(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=S, port=8080):
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.WARN)
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     logging.info('Starting httpd...\n')
